@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The Starry Night | Van Gogh</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@300;400;600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:
+    radial-gradient(circle at top, #3f5d99 0%, #13213f 45%, #07101f 100%);
+    overflow-x:hidden;
+    color:white;
+    font-family:'Poppins', sans-serif;
+    position:relative;
+}
+.music-player{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(10px);
+    padding:15px;
+    border-radius:20px;
+    color:white;
+    font-size:14px;
+    border:1px solid rgba(255,255,255,0.1);
+}
+
+/* ========================= */
+/* ANIMATED SWIRL BACKGROUND */
+/* ========================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    width:250%;
+    height:250%;
+    left:-70%;
+    top:-70%;
+    background:
+    radial-gradient(circle, rgba(255,220,120,0.15) 2px, transparent 4px),
+    radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 2px),
+    radial-gradient(circle at center, rgba(120,160,255,0.08), transparent 60%);
+    background-size:180px 180px, 120px 120px, 100% 100%;
+    animation: swirl 55s linear infinite;
+    z-index:-5;
+}
+
+@keyframes swirl{
+    0%{
+        transform:rotate(0deg);
+    }
+    100%{
+        transform:rotate(360deg);
+    }
+}
+
+/* ========================= */
+/* TWINKLING STARS */
+/* ========================= */
+
+.stars{
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    z-index:-2;
+}
+
+.star{
+    position:absolute;
+    width:3px;
+    height:3px;
+    background:white;
+    border-radius:50%;
+    animation: twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle{
+    from{
+        opacity:0.2;
+        transform:scale(1);
+    }
+    to{
+        opacity:1;
+        transform:scale(2);
+    }
+}
+
+/* ========================= */
+/* GLOW EFFECTS */
+/* ========================= */
+
+.glow{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(90px);
+    opacity:0.35;
+    z-index:-1;
+}
+
+.glow1{
+    width:350px;
+    height:350px;
+    background:#ffd76b;
+    top:5%;
+    left:5%;
+    animation: float 8s ease-in-out infinite alternate;
+}
+
+.glow2{
+    width:400px;
+    height:400px;
+    background:#7ca9ff;
+    bottom:10%;
+    right:5%;
+    animation: float 10s ease-in-out infinite alternate;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(0px);
+    }
+    to{
+        transform:translateY(-40px);
+    }
+}
+
+/* ========================= */
+/* HERO SECTION */
+/* ========================= */
+
+header{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:40px;
+    position:relative;
+}
+
+.hero{
+    max-width:900px;
+    padding:70px;
+    border-radius:40px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,0.1);
+    box-shadow:0 0 50px rgba(255,223,120,0.12);
+    animation: fadeUp 2s ease;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0px);
+    }
+}
+
+header h1{
+    font-size:95px;
+    font-family:'Cinzel', serif;
+    color:#ffe39c;
+    letter-spacing:4px;
+    margin-bottom:25px;
+    text-shadow:0 0 25px rgba(255,227,156,0.5);
+}
+
+header p{
+    font-size:22px;
+    line-height:2;
+    color:#eef3ff;
+    font-weight:300;
+}
+
+/* ========================= */
+/* SCROLL DOWN */
+/* ========================= */
+
+.scroll{
+    margin-top:40px;
+    font-size:14px;
+    letter-spacing:3px;
+    color:#ffe39c;
+    animation:bounce 2s infinite;
+}
+
+@keyframes bounce{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(10px);
+    }
+}
+
+/* ========================= */
+/* MAIN */
+/* ========================= */
+
+section{
+    width:90%;
+    max-width:1300px;
+    margin:auto;
+    padding:120px 0;
+}
+
+/* ========================= */
+/* ABOUT */
+/* ========================= */
+
+.about{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.about img{
+    width:100%;
+    border-radius:35px;
+    box-shadow:0 0 40px rgba(255,223,120,0.2);
+    transition:0.5s;
+}
+
+.about img:hover{
+    transform:scale(1.03) rotate(-1deg);
+}
+
+.about-text{
+    background:rgba(255,255,255,0.06);
+    padding:50px;
+    border-radius:35px;
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+.about-text h2{
+    font-size:58px;
+    margin-bottom:25px;
+    color:#ffe39c;
+    font-family:'Cormorant Garamond', serif;
+}
+
+.about-text p{
+    line-height:2;
+    color:#edf2ff;
+    font-weight:300;
+}
+
+/* ========================= */
+/* CARDS */
+/* ========================= */
+
+.cards{
+    margin-top:110px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+}
+
+.card{
+    position:relative;
+    overflow:hidden;
+    padding:40px;
+    border-radius:35px;
+    background:rgba(255,255,255,0.07);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,0.08);
+    transition:0.5s;
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    width:160px;
+    height:160px;
+    background:rgba(255,223,120,0.12);
+    border-radius:50%;
+    top:-50px;
+    right:-50px;
+}
+
+.card:hover{
+    transform:translateY(-12px);
+    box-shadow:0 0 35px rgba(255,223,120,0.18);
+}
+
+.card h3{
+    font-size:34px;
+    color:#ffe39c;
+    margin-bottom:20px;
+    font-family:'Cormorant Garamond', serif;
+}
+
+.card p{
+    color:#eef3ff;
+    line-height:1.9;
+    font-weight:300;
+}
+
+/* ========================= */
+/* GALLERY */
+/* ========================= */
+
+.gallery-title{
+    text-align:center;
+    font-size:65px;
+    margin:120px 0 60px;
+    color:#ffe39c;
+    font-family:'Cormorant Garamond', serif;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.gallery img{
+    width:100%;
+    height:350px;
+    object-fit:cover;
+    border-radius:30px;
+    transition:0.5s;
+    box-shadow:0 0 25px rgba(255,223,120,0.12);
+}
+
+.gallery img:hover{
+    transform:scale(1.04);
+    filter:brightness(1.1);
+}
+
+/* ========================= */
+/* QUOTE */
+/* ========================= */
+
+.quote{
+    margin-top:140px;
+    text-align:center;
+    padding:90px 40px;
+    border-radius:40px;
+    background:rgba(255,255,255,0.06);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,0.1);
+}
+
+.quote h2{
+    font-size:60px;
+    color:#ffe39c;
+    margin-bottom:30px;
+    font-family:'Cormorant Garamond', serif;
+}
+
+.quote p{
+    font-size:30px;
+    line-height:2;
+    font-style:italic;
+    color:#f3f6ff;
+    font-weight:300;
+}
+
+/* ========================= */
+/* FOOTER */
+/* ========================= */
+
+footer{
+    text-align:center;
+    padding:40px;
+    margin-top:100px;
+    color:#dfe6ff;
+    background:rgba(0,0,0,0.2);
+    font-weight:300;
+    letter-spacing:2px;
+}
+
+/* ========================= */
+/* RESPONSIVE */
+/* ========================= */
+
+@media(max-width:900px){
+
+    header h1{
+        font-size:60px;
+    }
+
+    .hero{
+        padding:40px;
+    }
+
+    .about{
+        grid-template-columns:1fr;
+    }
+
+    .gallery-title{
+        font-size:45px;
+    }
+
+}
+<!-- TAMBAHKAN DI DALAM <style> -->
+
+.vinyl-player{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+
+    display:flex;
+    align-items:center;
+    gap:18px;
+
+    padding:18px 22px;
+
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,0.12);
+
+    border-radius:35px;
+
+    box-shadow:
+    0 0 25px rgba(255,223,120,0.12),
+    0 0 50px rgba(124,169,255,0.08);
+
+    z-index:999;
+    overflow:hidden;
+
+    animation:floatPlayer 5s ease-in-out infinite alternate;
+}
+
+/* glow background */
+
+.vinyl-player::before{
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    background:rgba(255,223,120,0.12);
+
+    border-radius:50%;
+
+    top:-70px;
+    right:-60px;
+
+    filter:blur(30px);
+}
+
+/* floating animation */
+
+@keyframes floatPlayer{
+
+    from{
+        transform:translateY(0px);
+    }
+
+    to{
+        transform:translateY(-10px);
+    }
+
+}
+
+/* ======================= */
+/* VINYL */
+/* ======================= */
+
+.vinyl{
+    width:80px;
+    height:80px;
+
+    border-radius:50%;
+
+    background:
+    repeating-radial-gradient(
+        circle at center,
+        #111 0px,
+        #000 3px,
+        #1b1b1b 6px,
+        #000 9px
+    );
+
+    position:relative;
+
+    animation:spin 4s linear infinite;
+
+    box-shadow:
+    0 0 20px rgba(255,255,255,0.15),
+    inset 0 0 20px rgba(255,255,255,0.08);
+}
+
+/* center */
+
+.vinyl::before{
+    content:"";
+
+    position:absolute;
+
+    width:24px;
+    height:24px;
+
+    background:#ffe39c;
+
+    border-radius:50%;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    box-shadow:0 0 12px rgba(255,227,156,0.6);
+}
+
+/* small center hole */
+
+.vinyl::after{
+    content:"";
+
+    position:absolute;
+
+    width:7px;
+    height:7px;
+
+    background:#111;
+
+    border-radius:50%;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+}
+
+/* spinning */
+
+@keyframes spin{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+/* ======================= */
+/* MUSIC INFO */
+/* ======================= */
+
+.music-info{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+.music-info h3{
+    font-size:16px;
+    font-family:'Cormorant Garamond', serif;
+    letter-spacing:1px;
+    color:#ffe39c;
+}
+
+.music-info p{
+    font-size:12px;
+    color:#dfe6ff;
+    opacity:0.8;
+}
+
+/* ======================= */
+/* AUDIO PLAYER */
+/* ======================= */
+
+audio{
+    width:200px;
+    height:35px;
+
+    opacity:0.75;
+
+    filter:
+    drop-shadow(0 0 10px rgba(255,223,120,0.12));
+}
+
+/* ======================= */
+/* HOVER EFFECT */
+/* ======================= */
+
+.vinyl-player:hover{
+
+    transform:scale(1.03);
+
+    box-shadow:
+    0 0 35px rgba(255,223,120,0.18),
+    0 0 70px rgba(124,169,255,0.12);
+
+}
+
+/* ======================= */
+/* MOBILE */
+/* ======================= */
+
+@media(max-width:768px){
+
+    .vinyl-player{
+
+        right:50%;
+        transform:translateX(50%);
+
+        bottom:15px;
+
+        scale:0.9;
+    }
+
+}
+/* handwritten watermark */
+
+.signature{
+
+    position:fixed;
+
+    bottom:18px;
+    left:25px;
+
+    font-size:28px;
+
+    font-family:'Cursive';
+
+    color:rgba(255,255,255,0.45);
+
+    letter-spacing:2px;
+
+    transform:rotate(-5deg);
+
+    z-index:999;
+
+    user-select:none;
+
+    text-shadow:
+    0 0 10px rgba(255,223,120,0.12);
+
+    animation:signatureFloat 4s ease-in-out infinite alternate;
+}
+
+/* floating */
+
+@keyframes signatureFloat{
+
+    from{
+        transform:
+        rotate(-5deg)
+        translateY(0px);
+    }
+
+    to{
+        transform:
+        rotate(-5deg)
+        translateY(-5px);
+    }
+
+}
+.signature{
+
+    position:fixed;
+
+    bottom:18px;
+    left:25px;
+
+    font-size:28px;
+
+    font-family:'Great Vibes', cursive;
+
+    color:rgba(255,255,255,0.45);
+
+    letter-spacing:2px;
+
+    transform:rotate(-5deg);
+
+    z-index:999;
+
+    user-select:none;
+
+    text-shadow:
+    0 0 10px rgba(255,223,120,0.12);
+
+    animation:signatureFloat 4s ease-in-out infinite alternate;
+}
+</style>
+</head>
+
+<body>
+
+<!-- STARS -->
+
+<div class="stars">
+
+<div class="star" style="top:10%;left:20%;animation-delay:1s;"></div>
+<div class="star" style="top:15%;left:70%;animation-delay:2s;"></div>
+<div class="star" style="top:30%;left:50%;animation-delay:3s;"></div>
+<div class="star" style="top:50%;left:80%;animation-delay:1s;"></div>
+<div class="star" style="top:70%;left:15%;animation-delay:4s;"></div>
+<div class="star" style="top:85%;left:60%;animation-delay:2s;"></div>
+<div class="star" style="top:40%;left:35%;animation-delay:5s;"></div>
+<div class="star" style="top:25%;left:90%;animation-delay:1s;"></div>
+<div class="star" style="top:60%;left:45%;animation-delay:2s;"></div>
+<div class="star" style="top:75%;left:75%;animation-delay:3s;"></div>
+
+</div>
+
+<!-- GLOW -->
+
+<div class="glow glow1"></div>
+<div class="glow glow2"></div>
+
+<!-- HERO -->
+
+<header>
+
+<div class="hero">
+
+<h1>The Starry Night</h1>
+
+<p>
+A dreamy masterpiece by Vincent van Gogh —
+filled with swirling skies, glowing stars,
+soft moonlight, and emotional brush strokes
+that transformed the night into pure art.
+</p>
+
+<div class="scroll">
+✦ SCROLL TO EXPLORE ✦
+</div>
+
+</div>
+
+</header>
+
+<!-- MAIN -->
+
+<section>
+
+<div class="about">
+
+<img src="starrynight.img.jpg">
+
+<div class="about-text">
+
+<h2>About The Painting</h2>
+
+<p>
+Painted in 1889, <b>The Starry Night</b> became one of
+the most iconic artworks in history.
+Van Gogh painted it while staying at the
+Saint-Paul-de-Mausole asylum in France.
+</p>
+
+<br>
+
+<p>
+The swirling night sky creates a dreamlike atmosphere,
+while the glowing stars and moon symbolize hope,
+emotion, imagination, and beauty beyond reality.
+</p>
+
+<br>
+
+<p>
+Its magical combination of deep blues and glowing yellows
+makes the artwork feel alive — almost as if the sky itself
+is moving.
+</p>
+
+</div>
+
+</div>
+
+<!-- CARDS -->
+
+<div class="cards">
+
+<div class="card">
+<h3>Artist</h3>
+<p>
+Vincent van Gogh was a Dutch Post-Impressionist painter
+known for emotional and expressive artworks.
+</p>
+</div>
+
+<div class="card">
+<h3>Year</h3>
+<p>
+The painting was created in June 1889 during
+one of the most emotional moments of his life.
+</p>
+</div>
+
+<div class="card">
+<h3>Meaning</h3>
+<p>
+Many believe the painting represents dreams,
+hope, loneliness, and the beauty of imagination.
+</p>
+</div>
+
+<div class="card">
+<h3>Colors</h3>
+<p>
+Soft glowing yellows blend beautifully with
+deep calming blues to create visual harmony.
+</p>
+</div>
+
+</div>
+
+<!-- GALLERY -->
+
+<h2 class="gallery-title">Night Sky Gallery</h2>
+
+<div class="gallery">
+
+<img src="1.jpg">
+
+<img src="2.jpg">
+
+<img src="3.jpg">
+
+</div>
+
+<!-- QUOTE -->
+
+<div class="quote">
+
+<h2>Van Gogh Quote</h2>
+
+<p>
+“I dream my painting and then I paint my dream.”
+</p>
+
+</div>
+
+</section>
+
+<footer>
+✦ Inspired by Vincent van Gogh’s timeless masterpiece ✦
+</footer>
+
+<!-- TAMBAHKAN SEBELUM </body> -->
+
+<div class="vinyl-player">
+
+    <div class="vinyl"></div>
+
+    <div class="music-info">
+
+        <h3>✦ Starry Night Ambience ✦</h3>
+
+        <p>
+            dreamy vinyl edition · midnight museum vibes
+        </p>
+
+        <audio controls autoplay loop>
+            <source src="sza.mp3" type="audio/mpeg">
+        </audio>
+
+    </div>
+
+</div>
+<div class="signature">
+    — ad
+</div>
+</body>
+</html>
